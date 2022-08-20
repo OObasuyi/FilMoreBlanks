@@ -51,15 +51,3 @@ class BlanketFill:
         new_data = pd.DataFrame(new_data_collect)
         self.csv_data = pd.concat([self.csv_data,new_data],ignore_index=True)
         self.csv_data.drop_duplicates(inplace=True)
-
-
-if __name__ == "__main__":
-    bf = BlanketFill('test_csv.csv')
-    atc = ('new servers',['5,5,5,5','2.2.2.2','7,7,7,7'])
-    atc_2 = ('11.1.0.0/16',['233.31.244.39','100.19.68.193','235.253.243.128','232.151.66.30','74.22.1.140'])
-    atc_3 = ('169.156.158.231',['111.254.29.134','96.20.144.254'])
-    bf.populate_csv(atc)
-    bf.populate_csv(atc_2)
-    bf.populate_csv(atc_3,['source'])
-    bf.csv_data
-    g =1

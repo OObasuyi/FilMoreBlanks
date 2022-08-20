@@ -3,3 +3,4 @@
 /archived/
 *.csv
 /venv/
+*.xml

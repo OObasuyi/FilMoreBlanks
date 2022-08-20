@@ -1,0 +1,21 @@
+#### CONFIG FILE FOR FilMoreBlanks V0.1 ####
+
+# name of the file to edit
+CSV_filename: test_csv.csv
+
+# the key item should be the OLD value in the CSV to look for, while the value item should be what you want to change it
+# to. ALSO, the Value item HAS TO A BE LIST Object as one of the object displayed below
+change_list:
+  new servers: ['5,5,5,5','2.2.2.2','7,7,7,7']
+  11.1.0.0/16:
+    - "233.31.244.39"
+    - "100.19.68.193"
+    - '235.253.243.128'
+    - '232.151.66.30'
+    - '74.22.1.140'
+  169.156.158.231: ['111.254.29.134','96.20.144.254']
+
+# if only a particular set of columns are needed, match the key item from the change_list to the columns to only want
+# affected. this can be list or a string object.
+affect_only_columns:
+      11.1.0.0/16: 'source'

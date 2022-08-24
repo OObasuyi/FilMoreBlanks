@@ -25,6 +25,10 @@ python3 basic_access.py -config_file config.yaml
 
 ## using as a import
 when using as an import it will only return the object and no config files are needed since it interacts with the main function directly.
+```bash
+pip install FilMoreBlanks
+```
+
 ```python
 from blanket_fill import BlanketFill
 

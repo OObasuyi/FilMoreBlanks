@@ -5,25 +5,26 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "FilMoreBlanks"
-version = "0.0.1"
-description = "Read the latest Real Python tutorials"
+version = "1.0.1"
+description = "CSV fill in the blank editor"
 readme = "README.md"
-authors = [{ name = "Real Python", email = "info@realpython.com" }]
+authors = [{ name = "Eddie Obasuyi", email = "eddieobasuyi@gmail.com" }]
 license = { file = "LICENSE" }
 classifiers = [
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
 ]
-keywords = ["feed", "reader", "tutorial"]
+keywords = ["etl", "network-automation", "security-tools"]
 dependencies = [
-    "pandas>=1.4.3",
-    "PyYAM>=6.0"
+    "pandas>=1.4.3"
 ]
 requires-python = ">=3.8"
 
 [project.optional-dependencies]
-dev = ["black", "bumpver", "isort", "pip-tools", "pytest"]
+src_use = ["PyYAML>=6.0"]
 
 [project.urls]
-Homepage = "https://github.com/realpython/reader"
+Homepage = "https://github.com/OObasuyi/FilMoreBlanks"
+
+

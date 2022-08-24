@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "FilMoreBlanks"
-version = "1.0.1"
+version = "1.0.0"
 description = "CSV fill in the blank editor"
 readme = "README.md"
 authors = [{ name = "Eddie Obasuyi", email = "pypi@blankmarks.com" }]

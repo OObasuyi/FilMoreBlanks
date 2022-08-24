@@ -8,7 +8,7 @@ name = "FilMoreBlanks"
 version = "1.0.1"
 description = "CSV fill in the blank editor"
 readme = "README.md"
-authors = [{ name = "Eddie Obasuyi", email = "eddieobasuyi@gmail.com" }]
+authors = [{ name = "Eddie Obasuyi", email = "pypi@blankmarks.com" }]
 license = { file = "LICENSE" }
 classifiers = [
     "License :: OSI Approved :: MIT License",

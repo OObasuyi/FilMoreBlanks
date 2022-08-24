@@ -1,6 +1,6 @@
 from argparse import ArgumentParser
-import FilMoreBlanks.utilites as utilites
-from FilMoreBlanks.blanket_fill import BlanketFill
+import utilites
+from blanket_fill import BlanketFill
 
 
 def access_fil():

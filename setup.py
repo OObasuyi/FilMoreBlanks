@@ -6,7 +6,7 @@ with open("README.MD", "r") as fh:
 setuptools.setup(
     name='FilMoreBlanks',
     version='v1.0.1',
-    url='https://github.com/OObasuyi/FilMoreBlanks/tree/master',
+    url='https://github.com/OObasuyi/FilMoreBlanks',
     license='MIT',
     author='osamuede obasuyi',
     author_email='eddieobasuyi@gmail.com',
@@ -21,5 +21,6 @@ setuptools.setup(
     ],
     python_requires='>=3.8',
     py_modules=["BlanketFill"],
+    package_dir={'':'FilMoreBlanks/FilMoreBlanks'}
 
 )

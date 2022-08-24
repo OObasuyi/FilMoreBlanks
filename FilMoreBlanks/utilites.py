@@ -30,10 +30,7 @@ def create_file_path(folder: str, file_name: str):
 def get_yaml_file(file_name):
     import yaml
     with open(file_name, "r") as stream:
-        try:
-            return yaml.safe_load(stream)
-        except yaml.YAMLError as yaml_error:
-            return TypeError(yaml_error)
+        return yaml.safe_load(stream)
 
 
 def save_csv_data(data:pd.DataFrame,save_name):

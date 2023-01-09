@@ -1,14 +1,14 @@
 import pandas as pd
 
+
 class BlanketFill:
-    def __init__(self, df_data:pd.DataFrame=False):
+    def __init__(self, df_data: pd.DataFrame = False):
         """ CSV must have features/col headers from template
         @param df_data: df data from caller function.
         """
         self.filled_data = df_data
 
     def populate_csv(self, attr_to_change: tuple, selected_cols: list = 'all'):
-
         if len(attr_to_change) != 2:
             raise ValueError(f'attr_to_change value should only contain TWO values. We received {len(attr_to_change)}')
 
@@ -51,7 +51,7 @@ class BlanketFill:
         self.filled_data = pd.concat([self.filled_data, new_data], ignore_index=True)
         self.filled_data.drop_duplicates(inplace=True)
 
-    def fix_csv(self,config_dict:dict,affect_only_columns_dict:dict):
+    def fix_csv(self, config_dict: dict, affect_only_columns_dict: dict):
         for k, v in config_dict.items():
             change_item = tuple([k, v])
             # if we only want to AFFECT one col values
@@ -65,5 +65,3 @@ class BlanketFill:
                         self.populate_csv(attr_to_change=change_item)
             else:
                 self.populate_csv(attr_to_change=change_item)
-
-

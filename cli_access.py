@@ -1,6 +1,6 @@
 from argparse import ArgumentParser
-import utilites
-from blanket_fill import BlanketFill
+import FilMoreBlanks.utilites as utilites
+from FilMoreBlanks.blanket_fill import BlanketFill
 
 
 def access_fil():
@@ -19,7 +19,7 @@ def access_fil():
     for k,v in config_file['change_list'].items():
         # type check
         if not isinstance(v,list):
-            raise ValueError(f'THE RECEVIED VALUE IS NOT A LIST ITEM. you supplied a {type(v)}')
+            raise ValueError(f'THE RECEIVED VALUE IS NOT A LIST ITEM. you supplied a {type(v)}')
 
         change_item = tuple([k,v])
         # if BOTH keys match then we must only want to work on specific column(s)

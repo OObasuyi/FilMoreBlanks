@@ -7,3 +7,6 @@
 *.iml
 .idea/
 /.github/
+/sandbox/
+/FilMoreBlanks.egg-info/
+/build/

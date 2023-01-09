@@ -33,12 +33,12 @@ pip install FilMoreBlanks
 from blanket_fill import BlanketFill
 
 bf = BlanketFill('test_csv.csv')
-atc = ('new servers',['5,5,5,5','2.2.2.2','7,7,7,7'])
-atc_2 = ('11.1.0.0/16',['233.31.244.39','100.19.68.193','235.253.243.128','232.151.66.30','74.22.1.140'])
-atc_3 = ('169.156.158.231',['111.254.29.134','96.20.144.254'])
+atc = ('new servers', ['5,5,5,5', '2.2.2.2', '7,7,7,7'])
+atc_2 = ('11.1.0.0/16', ['233.31.244.39', '100.19.68.193', '235.253.243.128', '232.151.66.30', '74.22.1.140'])
+atc_3 = ('169.156.158.231', ['111.254.29.134', '96.20.144.254'])
 bf.populate_csv(atc)
 bf.populate_csv(atc_2)
-bf.populate_csv(atc_3,['source'])
+bf.populate_csv(atc_3, ['source'])
 # the resultant PD
-res = bf.csv_data
+res = bf.filled_data
 ```

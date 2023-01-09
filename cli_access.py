@@ -1,38 +1,62 @@
 from argparse import ArgumentParser
-import FilMoreBlanks.utilites as utilites
 from FilMoreBlanks.blanket_fill import BlanketFill
+import yaml
+from os import path, makedirs, replace
+import pandas as pd
+
+TOP_DIR = path.dirname(path.abspath(__file__))
 
 
-def access_fil():
+def access_fill():
     parser = ArgumentParser(prog='FilMoreBlanks CSV filler')
     mandatory_args = parser.add_argument_group(title='FilMoreBlanks Mandatory Fields')
     mandatory_args.add_argument('-config_file', help='YAML config file for FilMoreBlanks', required=True, type=str)
 
     args = parser.parse_args()
 
-    config_file = utilites.create_file_path(folder='FilMoreBlanks_Configs', file_name=args.config_file)
-    config_file = utilites.get_yaml_file(config_file)
+    config_file = create_file_path(folder='FilMoreBlanks_Configs', file_name=args.config_file)
+    with open(config_file, "r") as stream:
+        config_file = yaml.safe_load(stream)
 
     # get CSV file
-    blank_it = BlanketFill(config_file['CSV_filename'])
-    # since it stored a dict, include the key as a tuple item as an argument.
-    for k,v in config_file['change_list'].items():
-        # type check
-        if not isinstance(v,list):
-            raise ValueError(f'THE RECEIVED VALUE IS NOT A LIST ITEM. you supplied a {type(v)}')
+    csv_loc = config_file['CSV_filename']
+    csv_data = pd.read_csv(csv_loc)
+    # init FilMo
+    blank_it = BlanketFill(csv_data)
 
-        change_item = tuple([k,v])
-        # if BOTH keys match then we must only want to work on specific column(s)
-        for k_affect,only_affect in config_file['affect_only_columns'].items():
-            if k_affect == k:
-                only_affect = only_affect if isinstance(only_affect,list) else [only_affect]
-                blank_it.populate_csv(attr_to_change=change_item,selected_cols=only_affect)
-            else:
-                blank_it.populate_csv(attr_to_change=change_item)
-    # move file to spent and return new CSV.
-    utilites.move_spent_csv(config_file['CSV_filename'])
-    utilites.save_csv_data(blank_it.csv_data,f"COMPLETED_{config_file['CSV_filename']}")
+    # generate new CSV
+    blank_it.fix_csv(config_dict=config_file['change_list'], affect_only_columns_dict=config_file.get('affect_only_columns'))
+
+    # move file to archive and save new CSV.
+    create_file_path('archived', config_file['CSV_filename'])
+    save_csv_data(blank_it.filled_data, f"COMPLETED_{config_file['CSV_filename']}")
+
+
+def save_csv_data(data: pd.DataFrame, save_name):
+    fname = create_file_path('filled_files', file_name=save_name)
+    data.to_csv(fname, index=False)
+
+
+def create_file_path(folder: str, file_name: str):
+    allowed_exts = ['csv', 'yaml']
+
+    input_ext = '.'.join(file_name.split(".")[1:])
+    if input_ext.lower() not in allowed_exts:
+        raise ValueError(f'please ensure you using one of the allowed file types you gave {input_ext}')
+
+    fName = f'{TOP_DIR}/{folder}/{file_name}'
+    if not path.exists(f'{TOP_DIR}/{folder}'):
+        makedirs(f'{TOP_DIR}/{folder}')
+
+    # move file to correct dir if needed
+    if not path.exists(fName):
+        try:
+            replace(f'{TOP_DIR}/{file_name}', fName)
+        except:
+            # file has yet to be created or not in top path
+            pass
+    return fName
 
 
 if __name__ == "__main__":
-    access_fil()
+    access_fill()

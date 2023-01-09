@@ -1,30 +1,10 @@
 
 [build-system]
-requires      = ["setuptools>=61.0.0", "wheel"]
+requires = [
+    "setuptools>=54",
+    "wheel"
+]
 build-backend = "setuptools.build_meta"
 
-[project]
-name = "FilMoreBlanks"
-version = "1.0.0"
-description = "CSV fill in the blank editor"
-readme = "README.md"
-authors = [{ name = "Eddie Obasuyi", email = "pypi@blankmarks.com" }]
-license = { file = "LICENSE" }
-classifiers = [
-    "License :: OSI Approved :: MIT License",
-    "Programming Language :: Python",
-    "Programming Language :: Python :: 3",
-]
-keywords = ["etl", "network-automation", "security-tools"]
-dependencies = [
-    "pandas>=1.4.3"
-]
-requires-python = ">=3.8"
-
-[project.optional-dependencies]
-src_use = ["PyYAML>=6.0"]
-
-[project.urls]
-Homepage = "https://github.com/OObasuyi/FilMoreBlanks"
 
 
